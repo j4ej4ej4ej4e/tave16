@@ -30,3 +30,20 @@ BEGIN
     );
 END
 
+--178번
+SELECT 
+    score,                                    -- 
+    DENSE_RANK() OVER (                      -- 순위 매기기 (동점자 다음 순위 패스 안하고 1-1-2-3 이런식으로 )
+        ORDER BY score DESC                   -- 점수 높은 순으로
+    ) AS `rank`                              -- rank는 예약어 가능성 높아서 백틱하죠
+FROM Scores
+ORDER BY score DESC;
+
+-- 180번
+SELECT DISTINCT l1.num AS ConsecutiveNums
+FROM Logs l1                           -- 첫 번째 테이블 -> 기준
+JOIN Logs l2 ON l2.id = l1.id + 1     -- 다음
+JOIN Logs l3 ON l3.id = l1.id + 2     -- 다다음 
+WHERE l1.num = l2.num                  -- 첫 번째 = 두 번째
+  AND l1.num = l3.num;                -- 첫 번째 = 세 번째
+
