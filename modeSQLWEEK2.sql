@@ -35,8 +35,6 @@ FROM tutorial.aapl_historical_stock_price;
 -- 주의사항: 
 -- SUM은 숫자 컬럼에만 사용 가능
 -- NULL 값은 0으로 처리됨
--- 집계 함수는 세로(수직)로만 계산됨
-
 
 -- Lesson 3: MIN/MAX 함수
 -- 1. MIN과 MAX 함수 동시 사용
