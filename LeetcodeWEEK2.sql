@@ -47,3 +47,33 @@ JOIN Logs l3 ON l3.id = l1.id + 2     -- 다다음
 WHERE l1.num = l2.num                  -- 첫 번째 = 두 번째
   AND l1.num = l3.num;                -- 첫 번째 = 세 번째
 
+
+--184번 
+-- 단계별로 생각하기
+SELECT 
+    d.name AS Department,              -- 부서 이름
+    e.name AS Employee,                -- 직원 이름  
+    e.salary AS Salary                 -- 급여
+FROM Employee e
+JOIN Department d ON e.departmentId = d.id    -- 부서 정보 조인
+WHERE e.salary = (                            -- 바깥 조건문은 해당 직원의 급여가 그 부서 안 최고 급여와 같을 떄
+    SELECT MAX(salary)
+    FROM Employee e2                          
+    WHERE e2.departmentId = e.departmentId    -- 안쪽 조건문은 같은 부서 내에서
+);
+
+-- 185번 
+SELECT Department, Employee, Salary
+FROM (
+    SELECT 
+        d.name AS Department,
+        e.name AS Employee,
+        e.salary AS Salary,
+        DENSE_RANK() OVER (                    -- 부서별로 순위 매기기
+            PARTITION BY e.departmentId        -- 부서별로 나누어서  
+            ORDER BY e.salary DESC             -- 급여 높은 순으로
+        ) AS salary_rank
+    FROM Employee e
+    JOIN Department d ON e.departmentId = d.id
+) ranked_employees
+WHERE salary_rank <= 3;                       -- 상위 3등까지만
