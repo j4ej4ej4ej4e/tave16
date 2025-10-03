@@ -47,7 +47,7 @@ FROM tutorial.aapl_historical_stock_price;
 -- 날짜: 가장 이른/늦은 날짜  
 -- 텍스트: 알파벳 순서로 A에 가까운/Z에 가까운 값
 
-Lesson 4: AVG 함수
+-- Lesson 4: AVG 함수
 -- 1. 기본 AVG 함수 사용법
 SELECT AVG(high) -- high 컬럼의 평균값 계산
 FROM tutorial.aapl_historical_stock_price;
