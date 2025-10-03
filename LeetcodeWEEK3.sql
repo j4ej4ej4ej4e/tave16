@@ -97,4 +97,4 @@ FROM (
 ) AS friends
 GROUP BY id
 ORDER BY num DESC
-LIMIT 1; 이거 주석 다 제거한 버전으로 줘봐
+LIMIT 1; 
