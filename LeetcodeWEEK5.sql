@@ -75,9 +75,6 @@ SELECT
     SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_total_amount
 FROM
     Transactions
--- -- 기존의 YEAR(trans_date) = 2018 필터링을 제거하거나, 필요한 연도를 포함하도록 수정
--- WHERE YEAR(trans_date) IN (2018, 2019) 
--- (OR, to cover all data in the table, simply remove the WHERE clause)
 GROUP BY
     month, country
 ORDER BY
