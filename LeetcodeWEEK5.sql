@@ -27,6 +27,8 @@ LEFT JOIN
     RankedPrices rp ON p.product_id = rp.product_id AND rp.rn = 1
 ORDER BY
     p.product_id;
+
+
 ----------------------------------------------------------------------------------------------------------------
 
 --LeetCode 1174. Immediate Food Delivery II
